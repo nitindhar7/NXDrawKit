@@ -47,15 +47,17 @@ open class Canvas: UIView, UITableViewDelegate
         self.path.lineCapStyle = .round
         self.canvasId = canvasId
         self.backgroundImageView.image = image
+        self.backgroundImageView.backgroundColor = color
         if image != nil {
             session.appendBackground(Drawing(stroke: nil, background: image))
         }
-        self.backgroundColor = color
         self.initialize()
     }
     
     // MARK: - Private Methods
     fileprivate func initialize() {
+        self.backgroundColor = UIColor.white
+
         self.addSubview(self.backgroundImageView)
         self.backgroundImageView.contentMode = .scaleAspectFit
         self.backgroundImageView.autoresizingMask = [.flexibleHeight ,.flexibleWidth]
