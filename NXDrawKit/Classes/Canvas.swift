@@ -42,7 +42,7 @@ open class Canvas: UIView, UITableViewDelegate
         super.init(coder: aDecoder)
     }
     
-    @objc public init(canvasId: String? = nil, backgroundImage image: UIImage? = nil) {
+    @objc public init(canvasId: String? = nil, backgroundImage image: UIImage? = nil, backgroundColor color: UIColor? = UIColor.white) {
         super.init(frame: CGRect.zero)
         self.path.lineCapStyle = .round
         self.canvasId = canvasId
@@ -50,13 +50,12 @@ open class Canvas: UIView, UITableViewDelegate
         if image != nil {
             session.appendBackground(Drawing(stroke: nil, background: image))
         }
+        self.backgroundColor = color
         self.initialize()
     }
     
     // MARK: - Private Methods
     fileprivate func initialize() {
-        self.backgroundColor = UIColor.white
-        
         self.addSubview(self.backgroundImageView)
         self.backgroundImageView.contentMode = .scaleAspectFit
         self.backgroundImageView.autoresizingMask = [.flexibleHeight ,.flexibleWidth]
