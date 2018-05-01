@@ -255,8 +255,9 @@ open class Canvas: UIView, UITableViewDelegate
     
     
     // MARK: - Public Methods
-    @objc open func update(_ backgroundImage: UIImage?) {
+    @objc open func update(_ backgroundImage: UIImage?, _ contentMode: UIViewContentMode = .scaleAspectFit) {
         self.backgroundImageView.image = backgroundImage
+        self.backgroundImageView.contentMode = contentMode
         self.session.append(self.currentDrawing())
         self.saved = self.canSave()
         self.didUpdateCanvas()
